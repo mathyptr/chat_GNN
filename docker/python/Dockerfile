@@ -16,11 +16,13 @@ ENV PATH="/opt/venv/bin:$PATH"
 
 # Install any needed packages specified in requirements.txt
 RUN pip3 install -U pip
-#RUN pip3 install --no-cache-dir -r requirements.txt
-
+#RUN pip3 install --no-cache-dir -r 
+RUN (pip install torch && pip install torch_geometric && pip install OpenAI && pip install sentence_transformers)
 
 RUN (cd /app && mkdir /app/ai && mkdir /app/ai/script) 
 WORKDIR /app/ai/script
+
+CMD ["bash"]
 
 #https://raw.githubusercontent.com/mathyptr/XAI/refs/heads/main/script/shap_explain.py
 #RUN wget  https://github.com/mathyptr/XAI/archive/refs/heads/shap_explain.py
